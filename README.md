@@ -9,6 +9,8 @@ No bitmaps whatsoever - everything you see is computed at runtime. Does this mak
 - Create a build directory: `mkdir build && cd build`
 - build: `cmake .. && make`
 
+You can also get a pre-built binary from the [action artifacts](https://github.com/jjstoo/space-blaster/actions/workflows/cmake.yml)
+
 ## What's missing?
 
 A lot of things! Objects are not reasonably culled when out of view, resulting
