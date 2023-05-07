@@ -1,0 +1,47 @@
+// Game object with graphical presentation
+namespace Blaster.Messages;
+
+// Structs and enums
+struct Point {
+    x : int32;
+    y : int32;
+}
+
+struct Color {
+    r : uint8;
+    g : uint8;
+    b : uint8;
+    a : uint8;
+}
+
+enum RenderMode:byte {Polygon, Line, Point}
+enum EntityType:byte {SHIP, ASTEROID, BULLET, UNDEFINED}
+
+// Union of possible data tables
+union MessageType {
+    Entity
+}
+
+table BlasterMessage {
+    from:short;
+    message:MessageType;
+}
+
+table Polygon {
+    pos:Point;
+    outline:[Point];
+    render_mode:RenderMode = Line;
+    color:Color;
+    rot:float = 0;
+}
+
+table Entity {
+    id:int = -1;
+    owner_id:int = -1;
+    type:EntityType;
+    remote:bool = true;
+    collidable:bool;
+    body:Primitive2D;
+}
+
+root_type BlasterMessage;
